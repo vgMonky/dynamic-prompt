@@ -16,9 +16,5 @@ env/
 .DS_Store
 Thumbs.db
 
-# Project-specific
-dynamic-prompt/categories/*.json
-config.json
-
 # Nix-specific
 result
