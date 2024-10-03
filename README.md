@@ -19,7 +19,7 @@ dynamic-prompt/
 │   ├── main.py
 │   ├── category_manager.py
 │   ├── prompt_manager.py
-│   └── config.py
+│   └── config.json
 ├── README.md
 └── shell.nix
 ```
@@ -27,7 +27,7 @@ dynamic-prompt/
 ## Features
 
 - Generate dynamic prompts using category lists as variables
-- Manage category lists (create, append, remove items, delete)
+- Manage category lists (create, append, remove, delete)
 - List available categories and their items
 - Generate prompts with random categories
 
@@ -53,11 +53,13 @@ This module handles all operations related to category management. It includes t
 - `append_items(category_name, items)`
 - `remove_items(category_name, items)`
 - `delete_category(category_name)`
-- `get_random_item(category_name)`
+- `get_category_by_name(category_name)`
+- `get_category_by_index(index)`
 - `get_random_category()`
-- `list_categories()`
-- `list_items(category_name)`
-- `get_category(category_name)`
+- `get_category_size(category_name)`
+- `get_item(category_name, index)`
+- `get_random_item()`
+- `get_categories_name()`
 
 ### 3. prompt_manager.py
 
@@ -101,12 +103,6 @@ Options:
   -rm, --remove CATEGORY         Remove item(s) from a category
   -d, --delete CATEGORY     Delete a category list
 ```
-
-## Future Considerations
-
-1. File I/O and Caching: Consider implementing a caching mechanism to optimize file read/write operations.
-
-2. Data Validation: Implement validation for category names and item content (e.g., disallowing empty strings or duplicates).
 
 ## Installation
 
