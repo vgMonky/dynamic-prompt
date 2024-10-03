@@ -1,12 +1,22 @@
-# dynamic-prompt
+# Dynamic Prompt
 
-dynamic-prompt is a command-line tool for generating dynamic prompts using category lists as variables. It allows users to create and manage categories, then use them to generate dynamic prompts.
+Dynamic Prompt is a command-line tool for managing categories and generating dynamic prompts. It allows users to create, modify, and delete categories, as well as generate prompts using these categories.
 
 Example usage:
+
 ```
+
 dynamic-prompt -p "portrait of a {animals}, black and white, with {colours} eyes"
+
 ```
+
 This command might generate a prompt like "portrait of a lion, black and white, with green eyes" based on the items in the "animals" and "colours" categories.
+
+## Features
+
+- Manage category lists (create, append, remove, delete)
+- List available categories and their items
+- Generate dynamic prompts using category placeholders
 
 ## Project Structure
 
@@ -16,97 +26,101 @@ dynamic-prompt/
 │   ├── categories/
 │   │   ├── 1.json
 │   │   └── 2.json
-│   ├── main.py
 │   ├── category_manager.py
 │   ├── prompt_manager.py
-│   └── config.json
+│   ├── config.json
+│   └── main.py
 ├── README.md
 └── shell.nix
-```
-
-## Features
-
-- Generate dynamic prompts using category lists as variables
-- Manage category lists (create, append, remove, delete)
-- List available categories and their items
-- Generate prompts with random categories
-
-## Components
-
-### 1. Categories Storage
-
-Categories are stored in JSON files within the `dynamic-prompt/categories/` directory. Each file (e.g., `1.json`) can contain multiple category lists. The structure of a category file is as follows:
-
-```json
-{
-  "animals": ["dog", "cat", "lion", "elephant"],
-  "colours": ["red", "blue", "green", "purple"],
-  "styles": ["impressionist", "cubist", "surrealist"]
-}
-```
-
-### 2. category_manager.py
-
-This module handles all operations related to category management. It includes the following functions:
-
-- `create_category(category_name)`
-- `append_items(category_name, items)`
-- `remove_items(category_name, items)`
-- `delete_category(category_name)`
-- `get_category_by_name(category_name)`
-- `get_category_by_index(index)`
-- `get_random_category()`
-- `get_category_size(category_name)`
-- `get_item(category_name, index)`
-- `get_random_item()`
-- `get_categories_name()`
-
-### 3. prompt_manager.py
-
-This module handles prompt generation. It includes the following functions:
-
-- `dynamic_prompt(prompt_template)`
-  - Example: `dynamic_prompt("portrait of a {animals}, black and white, with {colours} eyes")`
-- `dynamic_prompt_random(n)`
-  - Generates a prompt with `n` random categories
-  - Example: If n is 3, it might generate `"{animals}, {colours}, {styles}"`
-
-Both functions will include error handling for cases where specified categories don't exist.
-
-### 4. config.json
-
-This module will define some variables. For example:
-
-```json
-{
-  "USE_CATEGORIES_FROM": ["categories/1.json", "categories/2.json"],
-  "SAVE_CATEGORIES_TO": "categories/2.json"
-}
-```
-
-All other scripts will use this configuration to determine which categories file to use and where to save when creating categories.
-
-### 5. main.py
-
-The main script that implements the command-line interface:
-
-```
-python dynamic-prompt.py [OPTIONS]
-
-Options:
-  -h, --help                Show this help message and exit
-  -p, --prompt PROMPT       Define a dynamic prompt with {category_name} variables
-  -r [N], --random [N]      Generate a dynamic prompt with N random {category_name} variables
-  -l, --list [CATEGORY]     List available categories, or list items if CATEGORY is specified
-  -n, --new CATEGORY        Create a new category list
-  -a, --append CATEGORY     Append item(s) to an existing category
-  -rm, --remove CATEGORY         Remove item(s) from a category
-  -d, --delete CATEGORY     Delete a category list
 ```
 
 ## Installation
 
 [Add installation instructions here]
+
+## Usage
+
+```
+python main.py [OPTIONS]
+```
+
+### Options:
+
+- `-h, --help`: Show the help message and exit
+- `-l [CATEGORY], --list [CATEGORY]`: List all categories, or list items if CATEGORY is specified
+- `-n CATEGORY, --new CATEGORY`: Create a new category
+- `-a CATEGORY ITEM, --append CATEGORY ITEM`: Append an item to an existing category
+- `-rm CATEGORY ITEM, --remove CATEGORY ITEM`: Remove an item from a category
+- `-d CATEGORY, --delete CATEGORY`: Delete a category
+- `-p PROMPT, --prompt PROMPT`: Generate a dynamic prompt with {{category_name}} placeholders
+
+### Examples:
+
+1. List all categories:
+   ```
+   python main.py -l
+   ```
+
+2. List items in a specific category:
+   ```
+   python main.py -l animals
+   ```
+
+3. Create a new category:
+   ```
+   python main.py -n vehicles
+   ```
+
+4. Add an item to a category:
+   ```
+   python main.py -a animals lion
+   ```
+
+5. Remove an item from a category:
+   ```
+   python main.py -rm animals lion
+   ```
+
+6. Delete a category:
+   ```
+   python main.py -d vehicles
+   ```
+
+7. Generate a prompt:
+   ```
+   python main.py -p "A {{animals}} riding a {{vehicles}} under a {{weather}} sky"
+   ```
+
+## Configuration
+
+The `config.json` file in the `dynamic-prompt` directory contains the following configuration:
+
+```json
+{
+  "CURRENT_CATEGORIES_FILE": "categories/1.json"
+}
+```
+
+You can modify this file to change the current categories file used by the tool.
+
+## Components
+
+### 1. Category Manager (category_manager.py)
+
+Handles all operations related to category management, including:
+- Creating and deleting categories
+- Adding and removing items from categories
+- Retrieving category information
+
+### 2. Prompt Manager (prompt_manager.py)
+
+Manages prompt generation, including:
+- Processing prompts with category placeholders
+- Replacing placeholders with random items from the specified categories
+
+### 3. Main Script (main.py)
+
+Implements the command-line interface and coordinates between the Category Manager and Prompt Manager.
 
 ## Contributing
 
