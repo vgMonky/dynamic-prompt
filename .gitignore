@@ -1,0 +1,24 @@
+# Python-specific
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+.env
+
+# IDE-specific files
+.vscode/
+.idea/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Project-specific
+dynamic-prompt/categories/*.json
+config.json
+
+# Nix-specific
+result
