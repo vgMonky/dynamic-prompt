@@ -1,12 +1,12 @@
 # Dynamic Prompt
 
-Dynamic Prompt is a command-line tool for managing categories and generating dynamic prompts. It allows users to create, modify, and delete categories, as well as generate prompts using these categories.
+Dynamic Prompt is a tool that uses categories lists (e.g. animals = [dog,lion , fox] ) to generate dynamic prompts based on thoes categories. It allows users to create, modify, and delete categories, as well as generate prompts using these categories.
 
 Example usage:
 
 ```
 
-dynamic-prompt -p "portrait of a {animals}, black and white, with {colours} eyes"
+python main.py -p "portrait of a {{animals}}, black and white, with {{colours}} eyes"
 
 ```
 
@@ -17,22 +17,6 @@ This command might generate a prompt like "portrait of a lion, black and white, 
 - Manage category lists (create, append, remove, delete)
 - List available categories and their items
 - Generate dynamic prompts using category placeholders
-
-## Project Structure
-
-```
-dynamic-prompt/
-├── dynamic-prompt/
-│   ├── categories/
-│   │   ├── 1.json
-│   │   └── 2.json
-│   ├── category_manager.py
-│   ├── prompt_manager.py
-│   ├── config.json
-│   └── main.py
-├── README.md
-└── shell.nix
-```
 
 ## Installation
 
