@@ -1,0 +1,17 @@
+{
+  "animals": [
+    "cat",
+    "elephant",
+    "lion",
+    "tiger",
+    "dog",
+    "fox"
+  ],
+  "colours": [
+    "red",
+    "blue",
+    "green",
+    "yellow",
+    "purple"
+  ]
+}
