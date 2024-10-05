@@ -2,6 +2,12 @@
 
 Dynamic Prompt is a tool that uses category lists (e.g., animals = [dog, lion, fox]) to generate dynamic prompts. It allows users to create, modify, and delete categories, as well as generate prompts using these categories.
 
+Example usage:
+```
+dynamic-prompt -p "portrait of a {{animals}}, black and white, with {{colours}} eyes"
+```
+This command might generate a prompt like "portrait of a lion, black and white, with green eyes" based on the items in the "animals" and "colours" categories.
+
 ## Features
 
 - Manage category lists (create, append, remove, delete)
