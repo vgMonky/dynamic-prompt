@@ -1,16 +1,20 @@
 import argparse
 import sys
 import json
+import os
 from category_manager import CategoryManager
 from prompt_manager import PromptManager
 
 def load_config():
-    with open('config.json', 'r') as f:
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    config_path = os.path.join(script_dir, 'config.json')
+    with open(config_path, 'r') as f:
         return json.load(f)
 
 def main():
     config = load_config()
-    category_file = config['CURRENT_CATEGORIES_FILE']
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    category_file = os.path.join(script_dir, config['CURRENT_CATEGORIES_FILE'])
     category_manager = CategoryManager(category_file)
     prompt_manager = PromptManager(category_manager)
 
