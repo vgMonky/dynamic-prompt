@@ -56,7 +56,7 @@ If you don't use Nix, you can install the package manually:
 
 ## Usage
 
-After installation, you can use the `dynamic-prompt` :nd it will show help and options.
+After installation, you can use the `dynamic-prompt` and it will show help and options.
 
 ```
 dynamic-prompt 
@@ -112,21 +112,3 @@ The `config.json` file in the `dynamic_prompt` directory contains the following 
 
 You can modify this file to change the current categories file used by the tool.
 
-## Components
-
-### 1. Category Manager (category_manager.py)
-Handles all operations related to category management.
-
-### 2. Prompt Manager (prompt_manager.py)
-Manages prompt generation.
-
-### 3. Main Script (main.py)
-Implements the command-line interface and coordinates between the Category Manager and Prompt Manager.
-
-## Contributing
-
-[Add contribution guidelines here]
-
-## License
-
-[Add license information here]
