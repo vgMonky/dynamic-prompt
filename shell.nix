@@ -5,11 +5,20 @@ pkgs.mkShell {
     python3
     python3Packages.pip
     python3Packages.setuptools
-    python3Packages.wheel
   ];
 
   shellHook = ''
-    echo "Welcome to the dynamic-prompt development environment!"
-    echo "Python version: $(python --version)"
+    # Create a virtual environment if it doesn't exist
+    if [ ! -d "venv" ]; then
+      python -m venv venv
+    fi
+    
+    # Activate the virtual environment
+    source venv/bin/activate
+    
+    # Install the package in editable mode
+    pip install -e .
+    
+    echo "Dynamic Prompt development environment activated!"
   '';
 }

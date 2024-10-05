@@ -2,8 +2,8 @@ import argparse
 import sys
 import json
 import os
-from category_manager import CategoryManager
-from prompt_manager import PromptManager
+from .category_manager import CategoryManager
+from .prompt_manager import PromptManager
 
 def load_config():
     script_dir = os.path.dirname(os.path.abspath(__file__))

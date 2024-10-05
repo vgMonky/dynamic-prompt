@@ -1,7 +1,7 @@
 import re
 import random
 from typing import List
-from category_manager import CategoryManager
+from .category_manager import CategoryManager
 
 class PromptManager:
     def __init__(self, category_manager: CategoryManager):

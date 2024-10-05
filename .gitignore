@@ -18,3 +18,16 @@ Thumbs.db
 
 # Nix-specific
 result
+
+# Python package-specific
+*.egg-info/
+dist/
+build/
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+
+# Logs
+*.log
