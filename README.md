@@ -10,8 +10,7 @@ This command might generate a prompt like "portrait of a lion, black and white, 
 
 ## Features
 
-- Manage category lists (create, append, remove, delete)
-- List available categories and their items
+- Manage category lists
 - Generate dynamic prompts using category placeholders
 
 ## Installation
